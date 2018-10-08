@@ -3,8 +3,8 @@ struct
   type test = string * (unit -> unit)
 
   local
-    val message : string list ref = ref []
-    val tests   : test list ref = ref []
+    val message : string list ref = ref nil
+    val tests   : test list ref = ref nil
     val count   : (int * int * int) ref = ref (0, 0, 0)
 
     fun run_test (msg, body) = ignore
