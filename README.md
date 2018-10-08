@@ -5,11 +5,9 @@
 [specs.sml]: https://bitbucket.org/cacilhas/unittestml/src/master/tests/specs.sml
 [test.mlb]: https://bitbucket.org/cacilhas/unittestml/src/master/tests/test.mlb
 
-
 # UnitTestML
 
 A unit test support for [Standard ML][sml] using [MLton][mlton].
-
 
 ## Running tests
 
@@ -19,7 +17,6 @@ cd unittestml/
 mlton tests/test.mlb
 ./tests/test
 ```
-
 
 ## Installing
 
@@ -33,7 +30,6 @@ smackage refresh
 smackage get UnitTestML
 ```
 
-
 ## Usage
 
 Create a subdirectory `tests/` inside your code’s root directory containing
@@ -42,7 +38,7 @@ the following MLBasis:
 ```sml
 (* tests/test.mlb *)
 local
-  $(ML_LIB)/basis/basis.mlb
+  $(SML_LIB)/basis/basis.mlb
   $(SMACKAGE)/UnitTestML/v1/unittest.mlb
   (* Your project’s MLBasis file here *)
 in
