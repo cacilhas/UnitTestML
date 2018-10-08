@@ -43,8 +43,8 @@ struct
 
     fun it description body = ignore
       let
-        val current = (!message) @ [description]
-        val key = String.concatWith " :: " current
+        val key =
+          (String.concatWith " :: " (!message)) ^ " :: it " ^ description
       in
         tests := (!tests) @ [(key, body)]
       end
