@@ -72,4 +72,7 @@ struct
   end
 end
 
-val _ = OS.Process.atExit TestCase.run
+local
+  val _ = OS.Process.atExit TestCase.run
+in
+end
