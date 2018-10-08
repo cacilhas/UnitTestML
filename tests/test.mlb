@@ -1,10 +1,6 @@
-ann
-  "allowOptSemicolon true"
+local
+  $(SML_LIB)/basis/basis.mlb
+  ../unittest.mlb
 in
-  local
-    $(SML_LIB)/basis/basis.mlb
-    ../unittest.mlb
-  in
-    specs.sml
-  end
+  specs.sml
 end

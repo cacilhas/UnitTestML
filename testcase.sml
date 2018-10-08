@@ -1,33 +1,30 @@
 structure TestCase : TEST_CASE =
 struct
-  type test_method = unit -> unit
-  type test        = string * test_method
+  type testMethod = unit -> unit
+  type test       = string * testMethod
 
   local
     val message : string list ref = ref nil
     val tests   : test list ref = ref nil
     val count   : (int * int * int) ref = ref (0, 0, 0)
 
-    fun run_test (msg, body) = ignore
+    fun runTest (msg, body) = ignore
       let
         val c = !count
       in
-        (
-          print ("[" ^ msg ^ "] ");
-          body ();
-          print "\027[32;1mok\027[0m\n";
-          count := (#1c + 1, #2c + 1, #3c)
+        ( print ("[" ^ msg ^ "] ")
+        ; body ()
+        ; print "\027[32;1mok\027[0m\n"
+        ; count := (#1c + 1, #2c + 1, #3c)
         )
         handle
           AssertionError msg =>
-            (
-              print ("\027[31massertion error: " ^ msg ^ "\027[0m\n");
-              count := (#1c + 1, #2c, #3c + 1)
+            ( print ("\027[31massertion error: " ^ msg ^ "\027[0m\n")
+            ; count := (#1c + 1, #2c, #3c + 1)
             )
           | e =>
-            (
-              print ("\027[31;1m" ^ (exnMessage e) ^ "\027[0m\n");
-              count := (#1c + 1, #2c, #3c + 1)
+            ( print ("\027[31;1m" ^ (exnMessage e) ^ "\027[0m\n")
+            ; count := (#1c + 1, #2c, #3c + 1)
             )
       end
 
@@ -53,7 +50,7 @@ struct
       let
         val c = !count
       in
-        List.app run_test (!tests)
+        List.app runTest (!tests)
         before print (
           "\027[1m--------------------------------\027[0m\n" ^
           "\027[34;1mrun " ^ (Int.toString (#1c)) ^ "\027[0m\n" ^

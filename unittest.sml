@@ -7,9 +7,9 @@ struct
   in
     val assert = assert' "expected true, got false"
 
-    fun assert_equal a b = assert' "parameters differ" (a = b)
+    fun assertEqual a b = assert' "parameters differ" (a = b)
 
-    fun assert_raise exc f =
+    fun assertRaise exc f =
       let
         val status = (f (); false) handle exc => true
       in
@@ -18,6 +18,6 @@ struct
 
     val refute = refute' "expected false, got true"
 
-    fun refute_equal a b = refute' "parameters equal" (a = b)
+    fun refuteEqual a b = refute' "parameters equal" (a = b)
   end
 end
