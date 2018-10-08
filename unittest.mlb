@@ -1,0 +1,19 @@
+ann
+  "redundantMatch ignore"
+in
+  local
+    $(SML_LIB)/basis/basis.mlb
+    assertion-error.sml
+    unittest.sig
+    unittest.sml
+    testcase.sig
+    testcase.sml
+  in
+    assertion-error.sml
+    signature UNIT_TEST
+    structure UnitTest
+    structure TestCase
+    unittest-open.sml
+    testcase-open.sml
+  end
+end

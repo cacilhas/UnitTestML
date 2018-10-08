@@ -1,0 +1,8 @@
+.*
+*~
+*.bak
+*.c
+*.o
+*.S
+*.s
+tests/test

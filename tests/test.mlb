@@ -1,0 +1,10 @@
+ann
+  "allowOptSemicolon true"
+in
+  local
+    $(SML_LIB)/basis/basis.mlb
+    ../unittest.mlb
+  in
+    specs.sml
+  end
+end
