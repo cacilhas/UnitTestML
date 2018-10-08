@@ -9,35 +9,27 @@ struct
     val count   : (int * int * int) ref = ref (0, 0, 0)
 
     fun run_test (msg, body) = ignore
-      (
-        print ("[" ^ msg ^ "] ");
-        body ();
-        print "\027[32;1mok\027[0m\n";
-        let
-          val c = !count
-        in
+      let
+        val c = !count
+      in
+        (
+          print ("[" ^ msg ^ "] ");
+          body ();
+          print "\027[32;1mok\027[0m\n";
           count := (#1c + 1, #2c + 1, #3c)
-        end
-      )
-      handle
-        AssertionError msg =>
-          (
-            print ("\027[31massertion error: " ^ msg ^ "\027[0m\n");
-            let
-              val c = !count
-            in
+        )
+        handle
+          AssertionError msg =>
+            (
+              print ("\027[31massertion error: " ^ msg ^ "\027[0m\n");
               count := (#1c + 1, #2c, #3c + 1)
-            end
-          )
-        | e =>
-          (
-            print ("\027[31;1m" ^ (exnMessage e) ^ "\027[0m\n");
-            let
-              val c = !count
-            in
+            )
+          | e =>
+            (
+              print ("\027[31;1m" ^ (exnMessage e) ^ "\027[0m\n");
               count := (#1c + 1, #2c, #3c + 1)
-            end
-          )
+            )
+      end
 
   in
     fun describe description body = ignore
@@ -58,19 +50,17 @@ struct
       end
 
     fun run () = ignore
-      (
+      let
+        val c = !count
+      in
         List.app run_test (!tests)
-        before let
-          val c = !count
-        in
-          print (
-            "\027[1m--------------------------------\027[0m\n" ^
-            "\027[34;1mrun " ^ (Int.toString (#1c)) ^ "\027[0m\n" ^
-            "\027[32;1msucceed " ^ (Int.toString (#2c)) ^ "\027[0m\n" ^
-            "\027[31;1mfailed " ^ (Int.toString (#3c)) ^ "\027[0m\n"
-          )
-        end
-      )
+        before print (
+          "\027[1m--------------------------------\027[0m\n" ^
+          "\027[34;1mrun " ^ (Int.toString (#1c)) ^ "\027[0m\n" ^
+          "\027[32;1msucceed " ^ (Int.toString (#2c)) ^ "\027[0m\n" ^
+          "\027[31;1mfailed " ^ (Int.toString (#3c)) ^ "\027[0m\n"
+        )
+      end
   end
 end
 
