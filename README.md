@@ -16,18 +16,10 @@ mlton tests/test.mlb
 
 ## Installing
 
-Clone this repository into an MLton library directory, as `$(ML_LIB)`,
-or create an entrypoint in the `mlb-path-map` file pointing the cloned local
-repository.
+Install [Smackage](http://www.elsman.com/lessons/2014/10/02/getting-started-with-smackage) in
+order to manage your libs.
 
-
-### Installation using Smackage
-
-Alternatively you can
-install [Smackage](http://www.elsman.com/lessons/2014/10/02/getting-started-with-smackage)
-and manage your libs using it.
-
-After installed Smackage, add UnitTestML to Smackage, and install it:
+With Smackage installed, add UnitTestML to it and install:
 
 ```sh
 smackage source UnitTestML git https://cacilhas@bitbucket.org/cacilhas/unittestml.git
@@ -38,24 +30,8 @@ smackage get UnitTestML
 
 ## Usage
 
-Assuming the `unittestml/` directory is inside `$(ML_LIB)`,
-create a directory `tests/` in your code’s root containing
+Create a subdirectory `tests/` inside your code’s root directory containing
 the following MLBasis:
-
-```sml
-(* tests/test.mlb *)
-local
-  $(ML_LIB)/basis/basis.mlb
-  $(ML_LIB)/unittestml/unittest.mlb
-  (* Your project’s MLBasis file here *)
-in
-  (*
-   * Reference the spec files inside tests/ here
-   *)
-end
-```
-
-Or if you used Smackage for installing:
 
 ```sml
 (* tests/test.mlb *)
