@@ -45,6 +45,7 @@ in this very repository is a usage example:
 create a `describe` spec in each spec file containing other `describe` specs
 or tests (`it` *fun*) themselves.
 
-For code consistency, we recommend using the `"allowOptSemicolon true"` *ann*.
+For code consistency, we recommend using the
+[`"allowOptSemicolon true"` *ann*](http://mlton.org/MLBasisAnnotations).
 See [`test.mlb`](https://bitbucket.org/cacilhas/unittestml/src/master/tests/test.mlb)
 for an example.
