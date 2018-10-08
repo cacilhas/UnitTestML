@@ -63,6 +63,7 @@ struct
           val c = !count
         in
           print (
+            "\027[1m--------------------------------\027[0m\n" ^
             "\027[34;1mrun " ^ (Int.toString (#1c)) ^ "\027[0m\n" ^
             "\027[32;1msucceed " ^ (Int.toString (#2c)) ^ "\027[0m\n" ^
             "\027[31;1mfailed " ^ (Int.toString (#3c)) ^ "\027[0m\n"
