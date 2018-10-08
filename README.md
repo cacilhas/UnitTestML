@@ -1,7 +1,14 @@
+[annotations]: http://mlton.org/MLBasisAnnotations
+[mlton]: http://mlton.org/
+[smackage]: http://www.elsman.com/lessons/2014/10/02/getting-started-with-smackage
+[sml]: http://sml-family.org/
+[specs.sml]: https://bitbucket.org/cacilhas/unittestml/src/master/tests/specs.sml
+[test.mlb]: https://bitbucket.org/cacilhas/unittestml/src/master/tests/test.mlb
+
+
 # UnitTestML
 
-A unit test support for [Standard ML](http://sml-family.org/)
-using [MLton](http://mlton.org/).
+A unit test support for [Standard ML][sml] using [MLton][mlton].
 
 
 ## Running tests
@@ -16,8 +23,7 @@ mlton tests/test.mlb
 
 ## Installing
 
-Install [Smackage](http://www.elsman.com/lessons/2014/10/02/getting-started-with-smackage) in
-order to manage your libs.
+Install [Smackage][smackage] in order to manage your libs.
 
 With Smackage installed, add UnitTestML to it and install:
 
@@ -46,12 +52,10 @@ in
 end
 ```
 
-The file [`specs.sml`](https://bitbucket.org/cacilhas/unittestml/src/master/tests/specs.sml)
-in this very repository is a usage example:
+The file [`specs.sml`][specs.sml] in this very repository is a usage example:
 create a `describe` spec in each spec file containing other `describe` specs
 or tests (`it` *fun*) themselves.
 
 For code consistency, we recommend using the
-[`"allowOptSemicolon true"` *ann*](http://mlton.org/MLBasisAnnotations).
-See [`test.mlb`](https://bitbucket.org/cacilhas/unittestml/src/master/tests/test.mlb)
-for an example.
+[`"allowOptSemicolon true"` *ann*][annotations].
+See [`test.mlb`][test.mlb] for an example.
