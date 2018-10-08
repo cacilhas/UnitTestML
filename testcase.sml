@@ -22,16 +22,16 @@ struct
       handle
         AssertionError msg =>
           (
-            print ("\027[31;1massertion error " ^ msg ^ "\027[0m\n");
+            print ("\027[31massertion error: " ^ msg ^ "\027[0m\n");
             let
               val c = !count
             in
               count := (#1c + 1, #2c, #3c + 1)
             end
           )
-        | _ =>
+        | e =>
           (
-            print "\027[31;1mexception raised\027[0m\n";
+            print ("\027[31;1m" ^ (exnMessage e) ^ "\027[0m\n");
             let
               val c = !count
             in
