@@ -1,6 +1,7 @@
 structure TestCase : TEST_CASE =
 struct
-  type test = string * (unit -> unit)
+  type test_method = unit -> unit
+  type test        = string * test_method
 
   local
     val message : string list ref = ref nil

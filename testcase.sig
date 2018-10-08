@@ -1,6 +1,7 @@
 signature TEST_CASE =
 sig
+  type test_method
   val run      : unit -> unit
-  val describe : string -> (unit -> unit) -> unit
-  val it       : string -> (unit -> unit) -> unit
+  val describe : string -> test_method -> unit
+  val it       : string -> test_method -> unit
 end
