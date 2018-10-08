@@ -74,7 +74,4 @@ struct
   end
 end
 
-local
-  val _ = OS.Process.atExit TestCase.run
-in
-end
+val () = OS.Process.atExit TestCase.run

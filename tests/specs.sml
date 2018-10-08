@@ -1,4 +1,4 @@
-val _ =
+val () =
   describe "UnitTest TestCase" (fn () => (
     describe "assert tests" (fn () => (
       it "should succeed for assert true" (fn () =>
