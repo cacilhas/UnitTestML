@@ -37,10 +37,9 @@ struct
     fun describe description body = ignore
       let
         val current = !message
-      in
-        message := current @ [description];
-        body ();
-        message := current
+      in message := current @ [description]
+       ; body ()
+       ; message := current
       end
 
     fun it description body = ignore
