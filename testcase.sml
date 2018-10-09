@@ -25,12 +25,12 @@ struct
         AssertionError msg =>
           ( print ("\027[31massertion error: " ^ msg ^ "\027[0m\n")
           ; incrCount 0
-          ; incrCount 1
+          ; incrCount 2
           )
         | e =>
           ( print ("\027[31;1m" ^ (exnMessage e) ^ "\027[0m\n")
           ; incrCount 0
-          ; incrCount 1
+          ; incrCount 2
           )
 
   in
