@@ -6,27 +6,32 @@ struct
   local
     val message : string list ref = ref nil
     val tests   : test list ref = ref nil
-    val count   : (int * int * int) ref = ref (0, 0, 0)
+    val count   : int array = Array.array (3, 0)
+
+    fun incrCount pos =
+      Array.update (count, pos, (Array.sub (count, pos)) + 1)
+
+    fun showCount pos =
+      Int.toString (Array.sub (count, pos))
 
     fun runTest (msg, body) = ignore
-      let
-        val c = !count
-      in
-        ( print ("[" ^ msg ^ "] ")
-        ; body ()
-        ; print "\027[32;1mok\027[0m\n"
-        ; count := (#1c + 1, #2c + 1, #3c)
-        )
-        handle
-          AssertionError msg =>
-            ( print ("\027[31massertion error: " ^ msg ^ "\027[0m\n")
-            ; count := (#1c + 1, #2c, #3c + 1)
-            )
-          | e =>
-            ( print ("\027[31;1m" ^ (exnMessage e) ^ "\027[0m\n")
-            ; count := (#1c + 1, #2c, #3c + 1)
-            )
-      end
+      ( print ("[" ^ msg ^ "] ")
+      ; body ()
+      ; print "\027[32;1mok\027[0m\n"
+      ; incrCount 0
+      ; incrCount 1
+      )
+      handle
+        AssertionError msg =>
+          ( print ("\027[31massertion error: " ^ msg ^ "\027[0m\n")
+          ; incrCount 0
+          ; incrCount 1
+          )
+        | e =>
+          ( print ("\027[31;1m" ^ (exnMessage e) ^ "\027[0m\n")
+          ; incrCount 0
+          ; incrCount 1
+          )
 
   in
     fun describe description body = ignore
@@ -47,17 +52,14 @@ struct
       end
 
     fun run () = ignore
-      let
-        val c = !count
-      in
-        List.app runTest (!tests)
+      ( List.app runTest (!tests)
         before print (
           "\027[1m--------------------------------\027[0m\n" ^
-          "\027[34;1mrun " ^ (Int.toString (#1c)) ^ "\027[0m\n" ^
-          "\027[32;1msucceed " ^ (Int.toString (#2c)) ^ "\027[0m\n" ^
-          "\027[31;1mfailed " ^ (Int.toString (#3c)) ^ "\027[0m\n"
+          "\027[34;1mrun " ^ (showCount 0) ^ "\027[0m\n" ^
+          "\027[32;1msucceed " ^ (showCount 1) ^ "\027[0m\n" ^
+          "\027[31;1mfailed " ^ (showCount 2) ^ "\027[0m\n"
         )
-      end
+      )
   end
 end
 
