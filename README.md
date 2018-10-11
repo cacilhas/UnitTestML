@@ -25,7 +25,7 @@ Install [Smackage][smackage] in order to manage your libs.
 With Smackage installed, add UnitTestML to it and install:
 
 ```sh
-smackage source UnitTestML git https://cacilhas@bitbucket.org/cacilhas/unittestml.git
+smackage source UnitTestML git https://bitbucket.org/cacilhas/unittestml.git
 smackage refresh
 smackage get UnitTestML
 ```
