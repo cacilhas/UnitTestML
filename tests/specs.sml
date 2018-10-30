@@ -19,8 +19,8 @@ val () =
         ; assertRaise (AssertionError "") (fn () => assertEqual "a" "v")
         ; assertRaise (AssertionError "") (fn () => assertEqual {x = 3} {x = 4})
         )
-      ))
-    )
+      )
+    ))
 
     ; describe "refute tests" (fn () =>
       ( it "should succeed for refute false" (fn () => refute false)
@@ -39,7 +39,7 @@ val () =
         ( assertRaise (AssertionError "") (fn () => refuteEqual 0 0)
         ; assertRaise (AssertionError "") (fn () => refuteEqual "a" "a")
         ; assertRaise (AssertionError "") (fn () => refuteEqual {x = 3} {x = 3})
-        ))
-      )
-    )
-  ))
+        )
+      ))
+    ))
+  )
