@@ -2,8 +2,8 @@
 [mlton]: http://mlton.org/
 [smackage]: http://www.elsman.com/lessons/2014/10/02/getting-started-with-smackage
 [sml]: http://sml-family.org/
-[specs.sml]: https://bitbucket.org/cacilhas/unittestml/src/master/tests/specs.sml
-[test.mlb]: https://bitbucket.org/cacilhas/unittestml/src/master/tests/test.mlb
+[specs.sml]: https://github.com/cacilhas/UnitTestML/blob/master/tests/specs.sml
+[test.mlb]: https://github.com/cacilhas/UnitTestML/blob/master/tests/test.mlb
 
 # UnitTestML
 
@@ -12,7 +12,7 @@ A unit test support for [Standard ML][sml] using [MLton][mlton].
 ## Running tests
 
 ```sh
-git clone git@bitbucket.org:cacilhas/unittestml.git
+git clone git@github.com:cacilhas/UnitTestML.git
 cd unittestml/
 mlton tests/test.mlb
 ./tests/test
@@ -25,7 +25,7 @@ Install [Smackage][smackage] in order to manage your libs.
 With Smackage installed, add UnitTestML to it and install:
 
 ```sh
-smackage source UnitTestML git https://bitbucket.org/cacilhas/unittestml.git
+smackage source UnitTestML git https://github.com/cacilhas/UnitTestML.git
 smackage refresh
 smackage get UnitTestML
 ```
