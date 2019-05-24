@@ -1,4 +1,4 @@
-provides: UnitTestML 1.0.0
+provides: UnitTestML 1.1.0
 description: simple unittest tools
 maintainer: Rodrigo Cacilhas <batalema@cacilhas.info>
 license: 3-Clause BSD License

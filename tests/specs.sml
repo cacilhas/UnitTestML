@@ -10,6 +10,10 @@ val () =
         )
       )
 
+      ; it "should succeed for assertNone" (fn () =>
+        assertNone NONE
+      )
+
       ; it "should fail for assert false" (fn () =>
         assertRaise (AssertionError "") (fn () => assert false)
       )
@@ -20,16 +24,24 @@ val () =
         ; assertRaise (AssertionError "") (fn () => assertEqual {x = 3} {x = 4})
         )
       )
+
+      ; it "should fail for assertNone" (fn () =>
+        assertRaise (AssertionError "") (fn () => assertNone (SOME 0))
+      )
     ))
 
     ; describe "refute tests" (fn () =>
       ( it "should succeed for refute false" (fn () => refute false)
 
       ; it "should succeed for refuteEqual" (fn () =>
-        (refuteEqual 0 1
+        ( refuteEqual 0 1
         ; refuteEqual "a" "ab"
         ; refuteEqual {x = 3} {x = 4}
       ))
+
+      ; it "should succeed for refuteNone" (fn () =>
+        refuteNone (SOME 0)
+      )
 
       ; it "should fail for refute true" (fn () =>
         assertRaise (AssertionError "") (fn () => refute true)
@@ -40,6 +52,10 @@ val () =
         ; assertRaise (AssertionError "") (fn () => refuteEqual "a" "a")
         ; assertRaise (AssertionError "") (fn () => refuteEqual {x = 3} {x = 3})
         )
+      )
+
+      ; it "should fail for refuteNone" (fn () =>
+        assertRaise (AssertionError "") (fn () => refuteNone NONE)
       ))
     ))
   )
